@@ -1,0 +1,9 @@
+# Tool-chain test WITHOUT CARLA: use with --backend synthetic (stationary-truck scene only).
+name: synthetic_test
+output: datasets/runs/synthetic_test
+duration: 10
+matrix:
+  - scenario: stationary_vehicle
+    speed: [60, 90, 120]
+    truck_distance: 150
+    seeds: 2

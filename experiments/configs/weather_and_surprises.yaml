@@ -1,0 +1,26 @@
+# Robustness study: the same hazards in different weather and lighting, plus unexpected
+# events in traffic (random hard braking ahead, jaywalking pedestrians).
+# NOTE: CARLA's weather mainly affects the CAMERA. LiDAR / radar weather effects need the
+# Part 2 degradation models; until then, read these results as "camera robustness".
+name: weather_and_surprises
+output: datasets/runs/weather_and_surprises
+town: Town04
+image_format: jpg
+duration: 25
+defaults:
+  traffic: none
+matrix:
+  - scenario: stationary_vehicle
+    speed: 80
+    weather: [clear, rain, heavy_rain, fog, dense_fog, sunset_glare, night, night_rain, night_fog]
+    seeds: 3
+  - scenario: pedestrian_cross
+    speed: 40
+    weather: [clear, rain, fog, night]
+    seeds: 3
+  - scenario: free_drive
+    duration: 60
+    traffic: medium
+    surprise_brakes: [2, 4]
+    jaywalk: [0.05, 0.3]
+    seeds: 3

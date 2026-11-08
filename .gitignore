@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+ipvseas_env/
+cv_env/
+.venv/
+venv/
+
+# CMake build files
+build/
+cmake-build-*/
+
+# Compiled files
+*.exe
+*.dll
+*.obj
+*.lib
+*.pdb
+
+# IDE
+.vscode/
+.idea/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Dataset and large files
+datasets/*
+!datasets/README.md
+
+# Experimental outputs
+results/*
+!results/README.md
+!results/*.md
+!results/*.png
+!results/*.csv
+
+# Local CMake presets (machine-specific paths)
+CMakeUserPresets.json

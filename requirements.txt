@@ -1,0 +1,14 @@
+# IPVSEAS Python dependencies
+# PyTorch is installed separately with the matching CUDA wheel, e.g.:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+# OpenCV: any 4.10+ or 5.x build works (opencv-python or opencv-contrib-python).
+
+numpy>=1.26
+opencv-python>=4.10
+ultralytics>=8.3
+scipy>=1.11
+pandas>=2.1
+scikit-learn>=1.4
+matplotlib>=3.8
+PyYAML>=6.0
+tqdm>=4.66

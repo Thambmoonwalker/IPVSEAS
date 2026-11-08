@@ -1,0 +1,18 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "local",
+      "displayName": "Local OpenCV + Eigen (your own paths)",
+      "binaryDir": "${sourceDir}/build/local",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "OpenCV_DIR": "C:/opencv/opencv/build",
+        "EIGEN3_INCLUDE_DIR": "C:/libs/eigen-3.4.0"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "local", "configurePreset": "local", "configuration": "Release" }
+  ]
+}

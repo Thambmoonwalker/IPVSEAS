@@ -1,0 +1,13 @@
+# Three short runs to check that CARLA, the recorder and the processing chain work.
+name: quick_trial
+output: datasets/runs/quick_trial
+town: Town04
+image_format: jpg
+duration: 15
+matrix:
+  - scenario: [lead_brake, stationary_vehicle]
+    speed: 72
+    seeds: 1
+  - scenario: free_drive
+    traffic: light
+    seeds: 1

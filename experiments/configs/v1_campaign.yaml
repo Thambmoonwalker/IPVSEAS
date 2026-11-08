@@ -1,0 +1,27 @@
+# IPVSEAS Part 1 - V1 evaluation campaign (clear weather, Town04 highways)
+# Each matrix block = cartesian product of its lists; "seeds: N" = seeds 1..N.
+# Keys are record_run.py options. Check cost first:  generate_dataset.py --config ... --dry-run
+name: v1_campaign
+output: datasets/runs/v1_campaign
+town: Town04
+image_format: jpg          # ~5-8x smaller than png
+duration: 25               # seconds per run (runs stop early at the first collision)
+defaults:
+  weather: clear
+  traffic: none
+
+matrix:
+  - scenario: lead_brake           # sudden braking ahead
+    speed: [50, 72, 90]
+    seeds: 5
+  - scenario: stationary_vehicle   # broken-down truck; 100-120 km/h shows what radar adds
+    speed: [60, 80, 100, 120]
+    seeds: 5
+  - scenario: pedestrian_cross     # pedestrian steps out
+    speed: [30, 40, 50]
+    seeds: 5
+  - scenario: free_drive           # false alarms per minute in normal traffic
+    duration: 60
+    traffic: [medium, heavy]
+    jaywalk: 0.1
+    seeds: 3
