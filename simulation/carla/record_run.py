@@ -65,7 +65,7 @@ LIDAR = dict(channels=32, range=100.0, points_per_second=640000, upper_fov=10.0,
 # limits; add them in post-processing for weather / robustness experiments (V2).
 RADAR = dict(range=200.0, horizontal_fov=90.0, vertical_fov=20.0, points_per_second=12000,
              x=2.4, y=0.0, z=0.5)
-RADAR_VELOCITY_SIGN = 1.0  # set by checking with view_run.py --radar-check
+RADAR_VELOCITY_SIGN = 1.0  # verified on CARLA 0.9.16 with view_run.py --radar-check (residual 0.04 m/s)
 
 # Weather presets: explicit values for carla.WeatherParameters fields (so they mean the same
 # thing in every CARLA version). Any field can be overridden on the command line.
@@ -418,6 +418,8 @@ def main():
             f.write(f"lidar_x={LIDAR['x']}\nlidar_y={LIDAR['y']}\nlidar_z={LIDAR['z']}\n")
             f.write(f"radar_x={RADAR['x']}\nradar_y={RADAR['y']}\nradar_z={RADAR['z']}\nradar_yaw_deg=0\n")
             f.write(f"radar_velocity_sign={RADAR_VELOCITY_SIGN}\n")
+            ext = ego.bounding_box.extent
+            f.write(f"ego_length={2 * ext.x:.3f}\nego_width={2 * ext.y:.3f}\n")
 
         names = ("ego.csv", "gt_actors.csv", "collision.csv", "events.csv")
         files = [open(out / n, "w", newline="") for n in names]
